@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:id="@+id/nav_recetas"
+        android:title="@string/nav_recetas"
+        android:icon="@drawable/ic_receta"/>
+
+    <item android:id="@+id/nav_favorites"
+        android:title="@string/nav_favorites"
+        android:icon="@drawable/ic_favoritos"/>
+
+    <item android:id="@+id/nav_shop"
+        android:title="@string/nav_shop"
+        android:icon="@drawable/ic_shop"/>
+
+    <item android:title="@string/nav_profile">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:title="@string/nav_log_out"
+                />
+        </menu>
+
+    </item>
+
+
+
+
+
+</menu>

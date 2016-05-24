@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Vegetariano_Fuerte</string>
+    <string name="recetas">Recetas</string>
+    <string name="nav_recetas">Recipes</string>
+    <string name="nav_favorites">Favorites</string>
+    <string name="nav_shop">Shopping List</string>
+    <string name="nav_log_out">Log Out</string>
+    <string name="nav_profile">Profile</string>
+    <string name="open_menu">Opciones de Recetas</string>
+    <string name="close_menu">Opciones cerradas</string>
+</resources>
