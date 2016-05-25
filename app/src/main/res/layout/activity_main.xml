@@ -5,15 +5,11 @@
     tools:context="com.example.e2dy.vegetariano_fuerte.MainActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
-
-
     <data>
         <variable
             name="s"
             type="java.lang.String"/>
     </data>
-
-
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer"
         android:layout_width="match_parent"
@@ -23,22 +19,21 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 />
-
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/dimens_diez"
                 android:src="@drawable/ic_buscar"
                 app:backgroundTint="@color/colorPrimary"
-                android:elevation="21dp"
+                android:elevation="@dimen/elevation_fab"
                 />
         </FrameLayout>
 
@@ -49,12 +44,7 @@
             android:layout_gravity="start"
             app:menu="@menu/menu_nav"
             >
-
         </android.support.design.widget.NavigationView>
-
-
-
-
 
     </android.support.v4.widget.DrawerLayout>
 </layout>

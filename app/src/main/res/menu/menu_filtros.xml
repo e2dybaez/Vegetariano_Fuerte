@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/action_filtro"
+        android:title="@string/filter"
+        android:icon="@drawable/ic_filtro"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/filtro_categoria"
+                android:title="@string/category">
+                <menu>
+                    <item
+                        android:title="@string/appetizers"/>
+                    <item
+                        android:title="@string/bread_and_cookies"/>
+                    <item
+                        android:title="@string/desserts"/>
+                    <item
+                        android:title="@string/main_dishes"/>
+                    <item
+                        android:title="@string/pastas"/>
+                    <item
+                        android:title="@string/soups"/>
+                    <item
+                        android:title="@string/salads"/>
+                </menu>
+            </item>
+
+            <item
+                android:id="@+id/filtro_tipo"
+                android:title="@string/type">
+                <menu>
+                    <item
+                        android:title="@string/vegetarian"/>
+                    <item
+                        android:title="@string/vegan"/>
+                </menu>
+            </item>
+
+            <item
+                android:id="@+id/filtro_dificultad"
+                android:title="@string/difficulty">
+                <menu>
+                    <item
+                        android:title="@string/easy"/>
+                    <item
+                        android:title="@string/medium"/>
+                    <item
+                        android:title="@string/hard"/>
+                </menu>
+            </item>
+
+
+
+        </menu>
+    </item>
+</menu>

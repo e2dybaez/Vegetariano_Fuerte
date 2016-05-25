@@ -4,4 +4,18 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="header">160dp</dimen>
     <dimen name="head_profile">60dp</dimen>
+    <dimen name="tamaño_letra_grid">12dp</dimen>
+    <dimen name="tamaño_icono_grid">17dp</dimen>
+    <dimen name="grosor_borde">2dp</dimen>
+    <dimen name="radio_borde">1dp</dimen>
+    <dimen name="dimens_diez">10dp</dimen>
+    <dimen name="elevation_fab">21dp</dimen>
+    <dimen name="height_imagenpublicidad">150dp</dimen>
+    <dimen name="height_rectangulo_publicidad">60dp</dimen>
+    <dimen name="tamaño_texto_publicidad">22dp</dimen>
+    <dimen name="height_imagen_receta">150dp</dimen>
+    <dimen name="tamaño_texto_receta">16dp</dimen>
+    <dimen name="margin_left_image">11dp</dimen>
+    <dimen name="margin_rigth_text">11dp</dimen>
+    <dimen name="margin_left_text">5dp</dimen>
 </resources>

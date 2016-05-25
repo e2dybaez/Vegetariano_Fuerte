@@ -1,12 +1,14 @@
 package com.example.e2dy.vegetariano_fuerte.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.example.e2dy.vegetariano_fuerte.DetailPageActivity;
 import com.example.e2dy.vegetariano_fuerte.R;
 import com.example.e2dy.vegetariano_fuerte.databinding.TemplatePublicidadBinding;
 import com.example.e2dy.vegetariano_fuerte.databinding.TemplateRecetaBinding;
@@ -16,10 +18,14 @@ import com.example.e2dy.vegetariano_fuerte.models.Receta;
 
 import java.util.List;
 
+import static android.content.Intent.getIntent;
+import static android.content.Intent.parseIntent;
+
 /**
  * Created by E2dy on 22/05/2016.
  */
-public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
 
     Context context;
     List<Item> data;
@@ -64,6 +70,9 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return data.size();
     }
 
+
+
+
     @Override
     public int getItemViewType(int position) {
         /*if(position%4==0){
@@ -74,7 +83,8 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return data.get(position).getType();
     }
 
-    static class RecetaViewHolder extends RecyclerView.ViewHolder{
+
+   class RecetaViewHolder extends RecyclerView.ViewHolder{
 
         TemplateRecetaBinding binding;
 
@@ -82,9 +92,11 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             super(itemView);
             binding = TemplateRecetaBinding.bind(itemView);
         }
-    }
 
-    static class PublicidadViewHolder extends RecyclerView.ViewHolder{
+
+   }
+
+    public static class PublicidadViewHolder extends RecyclerView.ViewHolder {
 
         TemplatePublicidadBinding binding;
 
@@ -92,5 +104,7 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             super(itemView);
             binding = TemplatePublicidadBinding.bind(itemView);
         }
+
     }
+
 }

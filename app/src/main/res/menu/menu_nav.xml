@@ -4,7 +4,8 @@
 
     <item android:id="@+id/nav_recetas"
         android:title="@string/nav_recetas"
-        android:icon="@drawable/ic_receta"/>
+        android:icon="@drawable/ic_receta"
+        />
 
     <item android:id="@+id/nav_favorites"
         android:title="@string/nav_favorites"

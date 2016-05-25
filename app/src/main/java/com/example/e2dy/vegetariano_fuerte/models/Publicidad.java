@@ -5,7 +5,7 @@ package com.example.e2dy.vegetariano_fuerte.models;
  */
 public class Publicidad implements Item {
 
-    String nombreEntidad, imagenEntidad;
+    String nombreEntidad, imagenEntidad, wpEntidad;
 
     public String getNombreEntidad() {
         return nombreEntidad;
@@ -21,6 +21,14 @@ public class Publicidad implements Item {
 
     public void setImagenEntidad(String imagenEntidad) {
         this.imagenEntidad = imagenEntidad;
+    }
+
+    public String getWpEntidad() {
+        return wpEntidad;
+    }
+
+    public void setWpEntidad(String wpEntidad) {
+        this.wpEntidad = wpEntidad;
     }
 
     @Override

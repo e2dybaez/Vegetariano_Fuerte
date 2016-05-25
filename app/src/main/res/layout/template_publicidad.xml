@@ -4,43 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
-
-
     <data>
         <variable
             name="publi"
             type="com.example.e2dy.vegetariano_fuerte.models.Publicidad"/>
     </data>
-
-
     <RelativeLayout
-        android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="end" >
+        android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="end"  >
 
         <ImageView
             android:id="@+id/imagen_publicidad"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginTop="@dimen/dimens_diez"
+            android:layout_marginRight="@dimen/dimens_diez"
+            android:layout_marginLeft="@dimen/dimens_diez"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:elevation="5dp"
+            android:layout_height="@dimen/height_imagenpublicidad"
+            android:elevation="@dimen/elevation_fab"
             android:src="@drawable/borde"
             app:imgUrl="@{publi.imagenEntidad}"
-
+            android:scaleType="centerCrop"
+            />
+        <ImageView
+            android:id="@+id/imagen_borde"
+            android:layout_marginTop="@dimen/dimens_diez"
+            android:layout_marginRight="@dimen/dimens_diez"
+            android:layout_marginLeft="@dimen/dimens_diez"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_imagenpublicidad"
+            android:elevation="@dimen/elevation_fab"
+            android:scaleType="centerCrop"
+            android:src="@drawable/borde_p"
+            />
+        <ImageView
+            android:id="@+id/rectangulo_publicidad"
+            android:layout_marginTop="@dimen/dimens_diez"
+            android:layout_marginRight="@dimen/dimens_diez"
+            android:layout_marginLeft="@dimen/dimens_diez"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_rectangulo_publicidad"
+            android:layout_below="@id/imagen_borde"
+            />
+        <TextView
+            android:id="@+id/wpentidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimens_diez"
+            android:layout_marginLeft="@dimen/dimens_diez"
+            android:text="@{publi.wpEntidad}"
+            tools:text="www.webpage-entidad.com"
+            android:layout_below="@id/imagen_borde"
+            android:textColor="#0000FF"
+            android:textSize="@dimen/dimens_diez"
+            android:textAlignment="center"
+            android:background="@drawable/borde_wp"
             />
 
         <TextView
-            android:id="@+id/nombre_entidad"
+            android:id="@+id/texto_publicidad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="@{publi.nombreEntidad}"
-            tools:text="Nombre entidad"
-            android:layout_below="@id/imagen_publicidad"
+            android:layout_marginRight="@dimen/dimens_diez"
+            android:layout_marginLeft="@dimen/dimens_diez"
+            android:text="Publicidad"
+            android:layout_below="@id/wpentidad"
             android:textColor="#000000"
-            android:textSize="22dp"/>
-
+            android:textSize="@dimen/tamaño_texto_publicidad"
+            android:background="@drawable/rectangulo_publicidad"
+            android:textAlignment="center"
+            />
         />
 
     </RelativeLayout>

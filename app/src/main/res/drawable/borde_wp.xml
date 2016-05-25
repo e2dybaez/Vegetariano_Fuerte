@@ -4,9 +4,8 @@
     android:shape="rectangle">
     <stroke
         android:width="@dimen/grosor_borde"
-        android:color="@color/colorPrimary" >
+        android:color="#ff6d00"
+        >
     </stroke>
-    <corners
-        android:radius="@dimen/radio_borde"   >
-    </corners>
+    <solid android:color="#94ffffff"/>
 </shape>

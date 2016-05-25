@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vegetariano_Fuerte</string>
+    <string name="recetas">Recetas</string>
+    <string name="nav_recetas">Recetas</string>
+    <string name="nav_favorites">Favoritos</string>
+    <string name="nav_shop">Lista de Compras</string>
+    <string name="nav_log_out">Cerrar Sesión</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="open_menu">Opciones de Recetas</string>
+    <string name="close_menu">Opciones cerradas</string>
+    <string name="texto_vegetariano_fuerte">Vegetariano Fuerte</string>
+    <string name="appetizers">Aperitivos</string>
+    <string name="bread_and_cookies">Galletas y Panes</string>
+    <string name="desserts">Postres</string>
+    <string name="main_dishes">Platos Principales</string>
+    <string name="pastas">Pastas</string>
+    <string name="soups">Sopas</string>
+    <string name="salads">Ensaladas</string>
+    <string name="category">Categoria</string>
+    <string name="filter">Filtro</string>
+    <string name="type">Tipo</string>
+    <string name="vegetarian">Vegetariana</string>
+    <string name="vegan">Vegana</string>
+    <string name="difficulty">Dificultad</string>
+    <string name="easy">Facil</string>
+    <string name="medium">Media</string>
+    <string name="hard">Dificil</string>
+</resources>
