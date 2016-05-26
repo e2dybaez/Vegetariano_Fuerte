@@ -1,0 +1,26 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="adapter"
+            type="com.example.e2dy.vegetariano_fuerte.adapters.RecetaAdapter"/>
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:setAdapter="@{adapter}"
+        >
+
+
+    </android.support.v7.widget.RecyclerView>
+    </FrameLayout>
+</layout>

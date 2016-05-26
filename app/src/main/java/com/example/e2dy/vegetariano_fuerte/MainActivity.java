@@ -2,6 +2,9 @@ package com.example.e2dy.vegetariano_fuerte;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +20,9 @@ import android.widget.Toast;
 import com.example.e2dy.vegetariano_fuerte.adapters.RecetaAdapter;
 import com.example.e2dy.vegetariano_fuerte.databinding.ActivityMainBinding;
 import com.example.e2dy.vegetariano_fuerte.databinding.HeaderNavBinding;
+import com.example.e2dy.vegetariano_fuerte.fragments.FavoritosFragment;
+import com.example.e2dy.vegetariano_fuerte.fragments.HomeFragment;
+import com.example.e2dy.vegetariano_fuerte.models.Item;
 import com.example.e2dy.vegetariano_fuerte.models.Publicidad;
 import com.example.e2dy.vegetariano_fuerte.models.Receta;
 import com.example.e2dy.vegetariano_fuerte.models.Usuario;
@@ -24,12 +30,14 @@ import com.example.e2dy.vegetariano_fuerte.util.L;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener {
+public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnHomeItemClick {
 
     ActivityMainBinding binding;
     ActionBarDrawerToggle toggle;
 
-    RecetaAdapter adapter;
+    HomeFragment home;
+    FavoritosFragment favoritos;
+
 
 
     @Override
@@ -53,90 +61,17 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         toggle = new ActionBarDrawerToggle(this, binding.drawer, R.string.open_menu, R.string.close_menu);
         binding.drawer.addDrawerListener(this);
 
-        //Configuracoin RecyclerView
+        //Fragments
 
-        L.data=new ArrayList<>();
-        adapter=new RecetaAdapter(this, L.data);
-        binding.recycler.setAdapter(adapter);
-        binding.recycler.setLayoutManager(new GridLayoutManager(this,2));
+        home=new HomeFragment();
+        favoritos=new FavoritosFragment();
 
-        loadItems();
-
-
+        putFragment(R.id.container,home);
+        binding.nav.setNavigationItemSelectedListener(this);
+        getSupportActionBar().setTitle(R.string.nav_recetas);
     }
 
-    private void loadItems() {
 
-        Receta r1=new Receta();
-        r1.setNombre("Lentejas");
-        r1.setTipo("Vegana");
-        r1.setCategoria("Principios");
-        r1.setDificultad("Facil");
-        r1.setPersonas("4");
-        r1.setImagen("http://www.amc.info/uploads/images/lentejas.jpg");
-        r1.setTiempo("30 min");
-
-        Receta r2=new Receta();
-        r2.setNombre("Frijoles");
-        r2.setTipo("Vegana");
-        r2.setCategoria("Principios");
-        r2.setDificultad("Media");
-        r2.setPersonas("2");
-        r2.setImagen("http://www.javirecetas.com/images/recetas/frijoles.jpg");
-        r2.setTiempo("45 min");
-
-        Receta r3=new Receta();
-        r3.setNombre("Postre de frutas");
-        r3.setTipo("Vegetariana");
-        r3.setCategoria("Postres");
-        r3.setDificultad("Facil");
-        r3.setPersonas("2");
-        r3.setImagen("http://www.pequerecetas.com/wp-content/uploads/2015/01/postres-fruta-2.jpg");
-        r3.setTiempo("25  min");
-
-        Receta r4=new Receta();
-        r4.setNombre("Flan de mandarina y kiwi");
-        r4.setTipo("Vegetariana");
-        r4.setCategoria("Postres");
-        r4.setDificultad("Dificil");
-        r4.setPersonas("3");
-        r4.setImagen("http://www.rafaela.com/cms/files/multimedias/21555_Super_light_Postres_ricos,_faciles_y_con_frutas2.jpg");
-        r4.setTiempo("1 hora");
-
-        Publicidad p1=new Publicidad();
-        p1.setNombreEntidad("Coca Cola");
-        p1.setImagenEntidad("https://s-media-cache-ak0.pinimg.com/736x/df/07/f5/df07f5c4386924ac7e72abce4d2e3e58.jpg");
-        p1.setWpEntidad("www.coca-cola.com.com");
-
-        Publicidad p2=new Publicidad();
-        p2.setNombreEntidad("Ades");
-        p2.setImagenEntidad("http://www.theinsidersnet.com/cms/app/modules/imagegallery/disposal/pl_1/campaigns/colombia/unilever_ades_1410/Ades_Blogs_Inv.jpg");
-        p2.setWpEntidad("http://www.ades.mx");
-
-
-        L.data.add(r1);
-        L.data.add(r2);
-        L.data.add(p1);
-        L.data.add(r3);
-        L.data.add(r4);
-        L.data.add(r1);
-        L.data.add(r4);
-        L.data.add(r1);
-        L.data.add(r2);
-        L.data.add(p2);
-        L.data.add(r1);
-        L.data.add(r2);
-        L.data.add(p1);
-        L.data.add(r3);
-        L.data.add(r4);
-        L.data.add(r1);
-        L.data.add(r4);
-        L.data.add(r1);
-        L.data.add(r2);
-        L.data.add(p2);
-
-        adapter.notifyDataSetChanged();
-    }
 
 
     @Override
@@ -193,4 +128,36 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
     }
     //endregion
 
+    private void putFragment(int container, Fragment fragment){
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(container, fragment);
+        ft.commit();
+
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_recetas:
+                getSupportActionBar().setTitle(R.string.nav_recetas);
+                putFragment(R.id.container,home);
+                break;
+            case R.id.nav_favorites:
+                getSupportActionBar().setTitle(R.string.nav_favorites);
+                putFragment(R.id.container,favoritos);
+                break;
+        }
+
+        binding.drawer.closeDrawers();
+        return false;
+    }
+
+    @Override
+    public void onHomeClick(int pos, int type) {
+        if(type== Item.TYPE_RECETA){
+            Intent intent = new Intent(this, DetailPageActivity.class);
+            intent.putExtra(DetailPageActivity.EXTRA_POS, pos);
+            startActivity(intent);
+        }
+    }
 }

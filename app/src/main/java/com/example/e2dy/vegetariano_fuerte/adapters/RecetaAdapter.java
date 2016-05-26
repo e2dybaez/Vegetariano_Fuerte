@@ -24,15 +24,21 @@ import static android.content.Intent.parseIntent;
 /**
  * Created by E2dy on 22/05/2016.
  */
-public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
 
+    public interface OnItemClickAdpapter{
+         void onClick(View v);
+    }
 
     Context context;
     List<Item> data;
+    OnItemClickAdpapter onItemClickAdpapter;
 
-    public RecetaAdapter(Context context, List<Item> data) {
+    public RecetaAdapter(Context context, List<Item> data,OnItemClickAdpapter onItemClickAdpapter) {
         this.context = context;
         this.data = data;
+        this.onItemClickAdpapter = onItemClickAdpapter;
+
     }
 
     @Override
@@ -56,10 +62,15 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         Item i =data.get(position);
         if(i.getType()==Item.TYPE_RECETA){
             Receta r = (Receta) i;
-            ((RecetaViewHolder) holder).binding.setReceta(r);
+            RecetaViewHolder h= (RecetaViewHolder) holder;
+            h.binding.setReceta(r);
+            h.binding.getRoot().setOnClickListener(this);
         }else{
             Publicidad p = (Publicidad) i;
-            ((PublicidadViewHolder)holder).binding.setPubli(p);
+            PublicidadViewHolder h= (PublicidadViewHolder) holder;
+            h.binding.setPubli(p);
+            h.binding.getRoot().setOnClickListener(this);
+
 
         }
 
@@ -83,8 +94,17 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return data.get(position).getType();
     }
 
+    @Override
+    public void onClick(View v) {
 
-   class RecetaViewHolder extends RecyclerView.ViewHolder{
+        onItemClickAdpapter.onClick(v);
+
+
+
+    }
+
+
+    class RecetaViewHolder extends RecyclerView.ViewHolder{
 
         TemplateRecetaBinding binding;
 
