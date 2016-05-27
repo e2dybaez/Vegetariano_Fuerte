@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
                 break;
         }
-        
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -146,6 +146,8 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
                 getSupportActionBar().setTitle(R.string.nav_favorites);
                 putFragment(R.id.container,favoritos);
                 break;
+            case R.id.nav_logout:
+                putFragment(R.id.container, );
         }
 
         binding.drawer.closeDrawers();
