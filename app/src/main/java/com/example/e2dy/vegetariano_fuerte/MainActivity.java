@@ -146,6 +146,9 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
                 getSupportActionBar().setTitle(R.string.nav_favorites);
                 putFragment(R.id.container,favoritos);
                 break;
+            case R.id.nav_logout:
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
         }
 
         binding.drawer.closeDrawers();
