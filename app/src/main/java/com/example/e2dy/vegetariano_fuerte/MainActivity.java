@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
                 putFragment(R.id.container,favoritos);
                 break;
             case R.id.nav_logout:
-                putFragment(R.id.container, );
+                putFragment(R.id.container, favoritos);
         }
 
         binding.drawer.closeDrawers();
