@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
                 break;
         }
-        Toast.makeText(this,"Seleccionaste"+item.getTitle(),Toast.LENGTH_SHORT).show();
+        
 
         return super.onOptionsItemSelected(item);
     }
