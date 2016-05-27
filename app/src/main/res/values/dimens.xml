@@ -18,4 +18,5 @@
     <dimen name="margin_left_image">11dp</dimen>
     <dimen name="margin_rigth_text">11dp</dimen>
     <dimen name="margin_left_text">5dp</dimen>
+    <dimen name="small">10dp</dimen>
 </resources>

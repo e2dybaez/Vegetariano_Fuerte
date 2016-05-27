@@ -25,4 +25,17 @@
     <string name="easy">Easy</string>
     <string name="medium">Medium</string>
     <string name="hard">Hard</string>
+
+    <string name="http_error_404">Recurso no encontrado</string>
+    <string name="http_error_server">Erro en Servidor</string>
+    <string name="http_error_internet">Sin Conexion a internet</string>
+    <string name="http_error_timeout">El servidor no responde</string>
+    <string name="login_usr">Usuario</string>
+    <string name="login_pass">Password</string>
+    <string name="login_nom">Nombre</string>
+    <string name="login_email">Email</string>
+
+    <string name="login_error">Usuario o password incorrecto</string>
+    <string name="reg_error">El usuario ya existe</string>
+    <string name="reg_success">Registro Exitoso</string>
 </resources>
