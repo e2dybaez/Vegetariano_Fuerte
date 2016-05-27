@@ -26,6 +26,7 @@
     <string name="medium">Medium</string>
     <string name="hard">Hard</string>
 
+<<<<<<< HEAD
     <string name="http_error_404">Recurso no encontrado</string>
     <string name="http_error_server">Erro en Servidor</string>
     <string name="http_error_internet">Sin Conexion a internet</string>
@@ -38,4 +39,8 @@
     <string name="login_error">Usuario o password incorrecto</string>
     <string name="reg_error">El usuario ya existe</string>
     <string name="reg_success">Registro Exitoso</string>
+=======
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+>>>>>>> 0ed76dcffc948ddeefc774115983e1b3c62ba366
 </resources>

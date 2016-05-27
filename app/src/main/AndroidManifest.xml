@@ -18,9 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".DetailPageActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".RegActivity"></activity>
+=======
+        <activity android:name=".DetailPageActivity"
+            android:theme="@style/AppTheme"
+            ></activity>
+>>>>>>> 0ed76dcffc948ddeefc774115983e1b3c62ba366
     </application>
 
 </manifest>
