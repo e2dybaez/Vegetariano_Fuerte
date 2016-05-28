@@ -19,4 +19,13 @@
     <dimen name="margin_rigth_text">11dp</dimen>
     <dimen name="margin_left_text">5dp</dimen>
     <dimen name="small">10dp</dimen>
+    <dimen name="margin_top_detail">20dp</dimen>
+    <dimen name="separacion_ic_detail">20dp</dimen>
+    <dimen name="separacion_text_detail">8dp</dimen>
+    <dimen name="tamaño_ic_detail">25dp</dimen>
+    <dimen name="width_linearlay">50dp</dimen>
+    <dimen name="lly_tipo">80dp</dimen>
+    <dimen name="llt_cat">72dp</dimen>
+    <dimen name="height_detail_image">250dp</dimen>
+    <dimen name="text_size_detail">14dp</dimen>
 </resources>

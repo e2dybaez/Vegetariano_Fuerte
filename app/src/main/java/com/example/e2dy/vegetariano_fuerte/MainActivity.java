@@ -1,6 +1,8 @@
 package com.example.e2dy.vegetariano_fuerte;
 
 import android.content.Intent;
+import android.databinding.tool.store.SetterStore;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -8,29 +10,28 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.AbsListView;
+import android.widget.ListView;
+import android.view.ActionMode;
 
-import com.example.e2dy.vegetariano_fuerte.adapters.RecetaAdapter;
+
+import com.example.e2dy.vegetariano_fuerte.adapters.IngredientesAdapter;
 import com.example.e2dy.vegetariano_fuerte.databinding.ActivityMainBinding;
 import com.example.e2dy.vegetariano_fuerte.databinding.HeaderNavBinding;
 import com.example.e2dy.vegetariano_fuerte.fragments.FavoritosFragment;
 import com.example.e2dy.vegetariano_fuerte.fragments.HomeFragment;
+import com.example.e2dy.vegetariano_fuerte.models.Ingrediente;
 import com.example.e2dy.vegetariano_fuerte.models.Item;
-import com.example.e2dy.vegetariano_fuerte.models.Publicidad;
-import com.example.e2dy.vegetariano_fuerte.models.Receta;
 import com.example.e2dy.vegetariano_fuerte.models.Usuario;
-import com.example.e2dy.vegetariano_fuerte.util.L;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnHomeItemClick {
+public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnHomeItemClick, View.OnClickListener {
 
     ActivityMainBinding binding;
     ActionBarDrawerToggle toggle;
@@ -38,13 +39,21 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
     HomeFragment home;
     FavoritosFragment favoritos;
 
+    IngredientesAdapter adapter;
+    List<Ingrediente> data;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
+        //ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        data = new ArrayList<>();
+        adapter = new IngredientesAdapter(getLayoutInflater(), data);
+        //binding.setOnClick(this);
+        //binding.setAdapter(adapter);
+        loadIngredientes();
 
         //Configuracion del HEADER
         HeaderNavBinding header=HeaderNavBinding.inflate(getLayoutInflater());
@@ -56,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         binding.nav.addHeaderView(header.getRoot());
 
 
-        //Configuracion del
+        //Configuracion del Menu lateral
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toggle = new ActionBarDrawerToggle(this, binding.drawer, R.string.open_menu, R.string.close_menu);
         binding.drawer.addDrawerListener(this);
@@ -70,9 +79,6 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         binding.nav.setNavigationItemSelectedListener(this);
         getSupportActionBar().setTitle(R.string.nav_recetas);
     }
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -162,5 +168,30 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
             intent.putExtra(DetailPageActivity.EXTRA_POS, pos);
             startActivity(intent);
         }
+        if(type== Item.TYPE_PUBLICIDAD){
+            Intent intent = new Intent(this, DetailPageActivity.class);
+            intent.putExtra(DetailPageActivity.EXTRA_POS, pos);
+            startActivity(intent);
+        }
+    }
+
+    private void loadIngredientes() {
+        Ingrediente i1 = new Ingrediente();
+        i1.setNombre("Arroz");
+        Ingrediente i2 = new Ingrediente();
+        i2.setNombre("Queso");
+        Ingrediente i3 = new Ingrediente();
+        i3.setNombre("Azucar");
+
+        data.add(i1);
+        data.add(i2);
+        data.add(i3);
+        adapter.notifyDataSetChanged();
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(this,"Ingredientes: "+adapter.getSelected().size(),Toast.LENGTH_SHORT).show();
     }
 }
