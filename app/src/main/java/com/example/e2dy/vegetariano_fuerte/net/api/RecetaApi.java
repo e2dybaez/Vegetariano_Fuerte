@@ -40,10 +40,8 @@ public class RecetaApi extends HttpApi{
     public void getRecetas(OnRecetasListener onRecetasListener){
         this.onRecetasListener = onRecetasListener;
         HttpAsyncTask task = makeTask(REQUEST_RECETAS, HttpAsyncTask.METHOD_GET);
-        //TODO: cambiar String
         //String url =  urlBase+context.getString(R.string.url_recetas);
-        String url= "http://192.168.0.31:3000/apix/recetas/recetas";
-        Log.i("haur","Entra a get recetas:");
+        String url= "http://localhost:3000/apii/recetas/receta";
         task.execute(url);
     }
 
@@ -56,7 +54,7 @@ public class RecetaApi extends HttpApi{
         }else{
             data =  new ArrayList<>();
         }
-        Log.i("haur","Llega a on Process, data: "+data.size());
+
         onRecetasListener.onRecetas(data);
     }
     @Override

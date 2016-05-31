@@ -154,7 +154,7 @@ public class HomeFragment extends Fragment implements RecetaAdapter.OnItemClickA
 
     @Override
     public void onRecetas(List<Receta> recetas) {
-        Log.i("haur","recetas tamaño: "+recetas.size());
+
         adapter = new RecetaAdapter(getContext(),recetas,this);
         binding.setAdapter(adapter);
         binding.recycler.setLayoutManager(new GridLayoutManager(getContext(),2));
