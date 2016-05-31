@@ -1,4 +1,4 @@
-package com.example.e2dy.vegetariano_fuerte.Fragments;
+package com.example.e2dy.vegetariano_fuerte.fragments;
 
 
 import android.os.Bundle;

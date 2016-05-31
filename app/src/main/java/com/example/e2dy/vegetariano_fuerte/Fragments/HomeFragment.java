@@ -49,7 +49,8 @@ public class HomeFragment extends Fragment implements RecetaAdapter.OnItemClickA
 
         if (savedInstanceState==null)
             L.data=new ArrayList<>();
-        adapter=new RecetaAdapter(getContext(), L.data, this);
+        //adapter=new RecetaAdapter(getContext(), L.data, this);
+        //adapter = new RecetaAdapter(,)
         binding.setAdapter(adapter);
         binding.recycler.setLayoutManager(new GridLayoutManager(getContext(),2));
 

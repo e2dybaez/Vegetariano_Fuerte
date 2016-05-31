@@ -2,6 +2,7 @@ package com.example.e2dy.vegetariano_fuerte.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.ListFragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,18 +27,24 @@ import static android.content.Intent.parseIntent;
  */
 public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
 
+    LayoutInflater inflater;
+    Context context;
+    List<Receta> data;
+    OnItemClickAdpapter onItemClickAdpapter;
+
+
+
+
     public interface OnItemClickAdpapter{
          void onClick(View v);
     }
 
-    Context context;
-    List<Item> data;
-    OnItemClickAdpapter onItemClickAdpapter;
 
-    public RecetaAdapter(Context context, List<Item> data,OnItemClickAdpapter onItemClickAdpapter) {
+    public RecetaAdapter(LayoutInflater inflater, List<Receta> data, Context context) {
+        this.inflater = inflater;
         this.context = context;
         this.data = data;
-        this.onItemClickAdpapter = onItemClickAdpapter;
+       // this.onItemClickAdpapter = onItemClickAdpapter;
 
     }
 
@@ -71,7 +78,6 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             h.binding.setPubli(p);
             h.binding.getRoot().setOnClickListener(this);
 
-
         }
 
     }
@@ -81,15 +87,14 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return data.size();
     }
 
-
-
-
     @Override
     public int getItemViewType(int position) {
         /*if(position%4==0){
             return 0;
         }else
             return 1;*/
+
+       // TemplateRecetaBinding binding = TemplateRecetaBinding.inflate(inflater);
 
         return data.get(position).getType();
     }
@@ -98,9 +103,6 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onClick(View v) {
 
         onItemClickAdpapter.onClick(v);
-
-
-
     }
 
 
@@ -112,8 +114,6 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             super(itemView);
             binding = TemplateRecetaBinding.bind(itemView);
         }
-
-
    }
 
     public static class PublicidadViewHolder extends RecyclerView.ViewHolder {

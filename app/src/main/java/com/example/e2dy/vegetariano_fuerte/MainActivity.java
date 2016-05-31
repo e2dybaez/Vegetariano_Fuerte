@@ -26,17 +26,24 @@ import com.example.e2dy.vegetariano_fuerte.models.Item;
 import com.example.e2dy.vegetariano_fuerte.models.Publicidad;
 import com.example.e2dy.vegetariano_fuerte.models.Receta;
 import com.example.e2dy.vegetariano_fuerte.models.Usuario;
+import com.example.e2dy.vegetariano_fuerte.net.api.RecetaApi;
 import com.example.e2dy.vegetariano_fuerte.util.L;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnHomeItemClick {
+public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnHomeItemClick, RecetaApi.OnUsuariosListener {
 
     ActivityMainBinding binding;
     ActionBarDrawerToggle toggle;
 
     HomeFragment home;
     FavoritosFragment favoritos;
+
+    List<Receta> data;
+    RecetaApi api;
+    RecetaAdapter adapter;
+
 
 
 
@@ -46,9 +53,22 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+
         //Configuracion del HEADER
         HeaderNavBinding header=HeaderNavBinding.inflate(getLayoutInflater());
         Usuario u = new Usuario();
+
+        data= new ArrayList<>();
+        adapter = new RecetaAdapter(getLayoutInflater(), data);
+        api= new RecetaApi(this);
+
+        //binding.setAdapter(adapter);
+
+         api.getRecetas(this);
+
+
+
         u.setNombre("Rango");
         u.setImagenBanner("http://www.wallpaperfo.com/thumbnails/detail/20120428/green%20leaves%20plants%20macro%20soft%20light%201920x1080%20wallpaper_www.wallpaperfo.com_23.jpg");
         u.setImagen("http://www.gamasutra.com/db_area/images/news2001/32975/110210-rg.jpg");
@@ -161,5 +181,14 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
             intent.putExtra(DetailPageActivity.EXTRA_POS, pos);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void onUsuarios(List<Receta> recetas) {
+        for(Receta r: recetas){
+            data.add(r);
+
+        }
+        adapter.notifyDataSetChanged();
     }
 }

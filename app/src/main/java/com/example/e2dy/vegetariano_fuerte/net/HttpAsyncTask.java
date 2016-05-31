@@ -5,6 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 
+import com.example.e2dy.vegetariano_fuerte.net.api.RecetaApi;
+
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 
@@ -17,6 +19,8 @@ public class HttpAsyncTask extends AsyncTask<String, Void, Response> {
     public static final int METHOD_POST=1;
     public static final int METHOD_PUT=2;
     public static final int METHOD_DELETE=3;
+
+
 
     public interface OnResponseListener{
         void onResponse(int request, Response response);
