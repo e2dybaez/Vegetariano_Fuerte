@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +13,21 @@ import android.view.ViewGroup;
 import com.example.e2dy.vegetariano_fuerte.R;
 import com.example.e2dy.vegetariano_fuerte.adapters.RecetaAdapter;
 import com.example.e2dy.vegetariano_fuerte.databinding.FragmentHomeBinding;
+import com.example.e2dy.vegetariano_fuerte.models.Item;
 import com.example.e2dy.vegetariano_fuerte.models.Publicidad;
 import com.example.e2dy.vegetariano_fuerte.models.Receta;
+import com.example.e2dy.vegetariano_fuerte.net.api.RecetaApi;
 import com.example.e2dy.vegetariano_fuerte.util.L;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements RecetaAdapter.OnItemClickAdpapter {
+public class HomeFragment extends Fragment implements RecetaAdapter.OnItemClickAdpapter, RecetaApi.OnRecetasListener {
+
+
 
     public interface OnHomeItemClick{
         void  onHomeClick(int pos, int type);
@@ -47,11 +53,11 @@ public class HomeFragment extends Fragment implements RecetaAdapter.OnItemClickA
 
         binding = FragmentHomeBinding.inflate(getLayoutInflater((savedInstanceState)));
 
-        if (savedInstanceState==null)
-            L.data=new ArrayList<>();
-        adapter=new RecetaAdapter(getContext(), L.data, this);
-        binding.setAdapter(adapter);
-        binding.recycler.setLayoutManager(new GridLayoutManager(getContext(),2));
+        //if (savedInstanceState==null)
+            //L.data=new ArrayList<>();
+        //adapter=new RecetaAdapter(getContext(), L.data, this);
+        //binding.setAdapter(adapter);
+        //binding.recycler.setLayoutManager(new GridLayoutManager(getContext(),2));
 
         if(savedInstanceState==null)
             loadItems();
@@ -60,6 +66,8 @@ public class HomeFragment extends Fragment implements RecetaAdapter.OnItemClickA
 
     private void loadItems() {
 
+        //region load1
+        /*
         Receta r1=new Receta();
         r1.setNombre("Lentejas");
         r1.setTipo("Vegana");
@@ -127,8 +135,13 @@ public class HomeFragment extends Fragment implements RecetaAdapter.OnItemClickA
         L.data.add(r1);
         L.data.add(r2);
         L.data.add(p2);
+        */
+        //endregion
 
-        adapter.notifyDataSetChanged();
+        RecetaApi recetaApi = new RecetaApi(getContext());
+        recetaApi.getRecetas(this);
+
+        //adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -137,7 +150,13 @@ public class HomeFragment extends Fragment implements RecetaAdapter.OnItemClickA
         onHomeItemClick.onHomeClick(pos,L.data.get(pos).getType()
         );
 
+    }
 
-
+    @Override
+    public void onRecetas(List<Receta> recetas) {
+        Log.i("haur","recetas tamaño: "+recetas.size());
+        adapter = new RecetaAdapter(getContext(),recetas,this);
+        binding.setAdapter(adapter);
+        binding.recycler.setLayoutManager(new GridLayoutManager(getContext(),2));
     }
 }

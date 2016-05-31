@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="url_base">http://10.0.2.2:3000</string>
+    <string name="url_base">http://192.168.0.31:3000/</string>
     <string name="url_login">/apix/usuarios/login</string>
     <string name="url_usuarios">/api/usuarios</string>
+    <string name="url_recetas">/apix/recetas/recetas</string>
 </resources>

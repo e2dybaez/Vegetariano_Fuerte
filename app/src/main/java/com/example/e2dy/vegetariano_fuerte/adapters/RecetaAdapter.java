@@ -31,10 +31,10 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     Context context;
-    List<Item> data;
+    List<Receta> data;
     OnItemClickAdpapter onItemClickAdpapter;
 
-    public RecetaAdapter(Context context, List<Item> data,OnItemClickAdpapter onItemClickAdpapter) {
+    public RecetaAdapter(Context context, List<Receta> data,OnItemClickAdpapter onItemClickAdpapter) {
         this.context = context;
         this.data = data;
         this.onItemClickAdpapter = onItemClickAdpapter;
