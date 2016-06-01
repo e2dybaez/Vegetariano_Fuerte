@@ -8,6 +8,9 @@
         <variable
             name="receta"
             type="com.example.e2dy.vegetariano_fuerte.models.Receta"/>
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener"/>
     </data>
 
     <LinearLayout
@@ -239,6 +242,7 @@
                         android:layout_height="@dimen/tamaño_ic_detail"
                         android:background="#ffffff"
                         android:foreground="@drawable/ic_unfavorite"
+                        app:setOnClickListener="@{onClick}"
                         />
                     <TextView
                         android:id="@+id/textofavorito"
