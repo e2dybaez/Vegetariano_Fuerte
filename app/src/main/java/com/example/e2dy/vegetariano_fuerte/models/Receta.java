@@ -6,6 +6,15 @@ package com.example.e2dy.vegetariano_fuerte.models;
 public class Receta implements Item {
 
     String nombre, imagen, dificultad, tiempo, personas, tipo, ingredientes, preparacion, categoria;
+    private long id;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;

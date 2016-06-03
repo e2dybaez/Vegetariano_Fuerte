@@ -2,22 +2,322 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     >
     <data>
         <variable
             name="receta"
             type="com.example.e2dy.vegetariano_fuerte.models.Receta"/>
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener"/>
     </data>
 
+    <ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        >
+        <TextView
+            android:layout_marginTop="@dimen/margin_top_detail"
+            android:id="@+id/nombre_receta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimens_diez"
+            android:layout_marginLeft="@dimen/dimens_diez"
+            android:text="@{receta.nombre}"
+            tools:text="Pasta Napolitana"
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            />
 
-<android.support.design.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
 
 
+        <RelativeLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="end" >
+            <ImageView
+                android:id="@+id/imagen_receta"
+                android:layout_marginTop="@dimen/dimens_diez"
+                android:layout_marginRight="@dimen/dimens_diez"
+                android:layout_marginLeft="@dimen/dimens_diez"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_detail_image"
+                android:elevation="@dimen/elevation_fab"
+                app:imgUrl="@{receta.imagen}"
+                android:scaleType="centerCrop"
 
-    >
+                />
+            <ImageView
+                android:id="@+id/imagen_borde"
+                android:layout_marginTop="@dimen/dimens_diez"
+                android:layout_marginRight="@dimen/dimens_diez"
+                android:layout_marginLeft="@dimen/dimens_diez"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_detail_image"
+                android:elevation="@dimen/elevation_fab"
+                android:scaleType="centerCrop"
+                android:src="@drawable/borde"
+                />
+        </RelativeLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/margin_top_detail"
+                android:id="@+id/linear_ly_iconos"
+                android:layout_marginRight="@dimen/dimens_diez"
+                android:layout_marginLeft="@dimen/dimens_diez"
+                >
+
+                //LLY TIPO
+                <LinearLayout
+                    android:layout_width="@dimen/ancho_items"
+                    android:layout_height="@dimen/alto_items"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/separacion_text_detail"
+                    android:layout_marginRight="@dimen/separacion_text_detail"
+                    >
+                    //ICONO DEL TIPO
+                    <ImageView
+                        android:id="@+id/ictipo"
+                        android:layout_width="@dimen/tamaño_ic_detail"
+                        android:layout_height="@dimen/tamaño_ic_detail"
+                        android:src="@drawable/ic_tipo"
+                        android:layout_gravity="center"
+                        />
+                    //TEXTO DEL TIPO
+                    <TextView
+                        android:id="@+id/tipo_receta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{receta.tipo}"
+                        tools:text="Vegetariana"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/tamaño_letra_detail"
+                        android:layout_below="@+id/ictipo"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        />
+                    />
+                </LinearLayout>
+
+                //LLY TIEMPO
+                <LinearLayout
+                    android:layout_width="@dimen/ancho_items"
+                    android:layout_height="@dimen/alto_items"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/separacion_text_detail"
+                    android:layout_marginRight="@dimen/separacion_text_detail"
+                    >
+                    //ICONO DE TIEMPO
+                    <ImageView
+                        android:id="@+id/ictiempo"
+                        android:layout_width="@dimen/tamaño_ic_detail"
+                        android:layout_height="@dimen/tamaño_ic_detail"
+                        android:src="@drawable/ic_tiempo"
+                        android:layout_gravity="center"
+                        />
+                    //TEXTO DE TIEMPO
+                    <TextView
+                        android:id="@+id/tiempo_receta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{receta.tiempo}"
+                        tools:text="45 min"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/tamaño_letra_detail"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+
+                //LLY DIFICULTAD
+                <LinearLayout
+                    android:layout_width="@dimen/ancho_items"
+                    android:layout_height="@dimen/alto_items"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/separacion_text_detail"
+                    android:layout_marginRight="@dimen/separacion_text_detail"
+                    >
+                    //ICONO DE DIFICULTAD
+                    <ImageView
+                        android:id="@+id/icdificultad"
+                        android:layout_width="@dimen/tamaño_ic_detail"
+                        android:layout_height="@dimen/tamaño_ic_detail"
+                        android:src="@drawable/ic_dificultad"
+                        android:layout_gravity="center"
+                        />
+                    //TEXTO DIFICULTAD
+                    <TextView
+                        android:id="@+id/dificultad_receta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{receta.dificultad}"
+                        tools:text="Facil"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/tamaño_letra_detail"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+
+                //LLY CATEGORIA
+                <LinearLayout
+                    android:layout_width="@dimen/ancho_items"
+                    android:layout_height="@dimen/alto_items"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/separacion_text_detail"
+                    android:layout_marginRight="@dimen/separacion_text_detail"
+                    >
+                    //ICONO DE CATEGORIA
+                    <ImageView
+                        android:id="@+id/iccategoria"
+                        android:layout_width="@dimen/tamaño_ic_detail"
+                        android:layout_height="@dimen/tamaño_ic_detail"
+                        android:src="@drawable/ic_categoria"
+                        android:layout_gravity="center"
+                        />
+                    //TEXTO DE CATEGORIA
+                    <TextView
+                        android:id="@+id/categoria_receta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{receta.tiempo}"
+                        tools:text="Platos principales"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/tamaño_letra_detail"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+
+                //LLY PERSONAS
+
+                <LinearLayout
+                    android:layout_width="@dimen/ancho_items"
+                    android:layout_height="@dimen/alto_items"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/separacion_text_detail"
+                    android:layout_marginRight="@dimen/separacion_text_detail"
+                    >
+                    //ICONO DE PERSONAS
+                    <ImageView
+                        android:id="@+id/icpersonas"
+                        android:layout_width="@dimen/tamaño_ic_detail"
+                        android:layout_height="@dimen/tamaño_ic_detail"
+                        android:src="@drawable/ic_personas"
+                        android:layout_gravity="center"
+                        />
+                    //TEXTO PERSONAS
+                    <TextView
+                        android:id="@+id/personas_receta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{receta.tiempo}"
+                        tools:text="4"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/tamaño_letra_detail"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="@dimen/ancho_items"
+                    android:layout_height="@dimen/alto_items"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/separacion_text_detail"
+                    android:layout_marginRight="@dimen/separacion_text_detail"
+                    >
+                    <ImageButton
+                        android:id="@+id/btn_unfavorite"
+                        android:layout_width="@dimen/tamaño_ic_detail"
+                        android:layout_height="@dimen/tamaño_ic_detail"
+                        android:background="#ffffff"
+                        android:foreground="@drawable/ic_unfavorite"
+                        android:layout_gravity="center"
+                        app:setOnClickListener="@{onClick}"
+                        android:src="@drawable/ic_unfavorite"
+                        />
+                    <TextView
+                        android:id="@+id/textofavorito"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Favorito"
+                        tools:text="FAV"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/tamaño_letra_detail"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView
+            android:layout_marginLeft="@dimen/dimens_diez"
+            android:textSize="@dimen/treinta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingredientes"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_marginTop="@dimen/doce"
+            android:layout_marginLeft="@dimen/dimens_diez"
+            android:textSize="@dimen/quince"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{receta.ingredientes}"
+            android:textColor="#000000"
+            android:layout_marginRight="@dimen/dimens_diez"
+            />
+
+        <TextView
+            android:layout_marginTop="@dimen/veinte"
+            android:layout_marginLeft="@dimen/dimens_diez"
+            android:textSize="@dimen/tamaño_p"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Preparación"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_marginTop="@dimen/margint"
+            android:layout_marginLeft="@dimen/dimens_diez"
+            android:layout_marginRight="@dimen/dimens_diez"
+            android:textSize="@dimen/tamañoprep"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{receta.preparacion}"
+            android:layout_marginBottom="@dimen/dimens_diez"
+            />
+    </LinearLayout>
+    </ScrollView>
 </layout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

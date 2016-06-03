@@ -11,9 +11,6 @@
         android:title="@string/nav_favorites"
         android:icon="@drawable/ic_favoritos"/>
 
-    <item android:id="@+id/nav_shop"
-        android:title="@string/nav_shop"
-        android:icon="@drawable/ic_shop"/>
 
     <item android:title="@string/nav_profile">
         <menu>

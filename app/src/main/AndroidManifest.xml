@@ -18,11 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".DetailPageActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".RegActivity"></activity>
-
+        <activity android:name=".DetailPageActivity" />
+        <activity android:name=".RegActivity" />
+        <activity android:name=".FilVegetarianaActivity" />
+        <activity android:name=".FilVeganaActivity"></activity>
     </application>
 
 </manifest>

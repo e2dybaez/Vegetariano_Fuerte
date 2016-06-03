@@ -1,6 +1,8 @@
 package com.example.e2dy.vegetariano_fuerte;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -8,29 +10,19 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.example.e2dy.vegetariano_fuerte.adapters.RecetaAdapter;
+
 import com.example.e2dy.vegetariano_fuerte.databinding.ActivityMainBinding;
 import com.example.e2dy.vegetariano_fuerte.databinding.HeaderNavBinding;
 import com.example.e2dy.vegetariano_fuerte.fragments.FavoritosFragment;
 import com.example.e2dy.vegetariano_fuerte.fragments.HomeFragment;
 import com.example.e2dy.vegetariano_fuerte.models.Item;
-import com.example.e2dy.vegetariano_fuerte.models.Publicidad;
-import com.example.e2dy.vegetariano_fuerte.models.Receta;
 import com.example.e2dy.vegetariano_fuerte.models.Usuario;
-import com.example.e2dy.vegetariano_fuerte.util.L;
 
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnHomeItemClick {
+public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnHomeItemClick, FavoritosFragment.OnFavoritoItemClick {
 
     ActivityMainBinding binding;
     ActionBarDrawerToggle toggle;
@@ -56,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         binding.nav.addHeaderView(header.getRoot());
 
 
-        //Configuracion del
+        //Configuracion del Menu lateral
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toggle = new ActionBarDrawerToggle(this, binding.drawer, R.string.open_menu, R.string.close_menu);
         binding.drawer.addDrawerListener(this);
@@ -80,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         return super.onCreateOptionsMenu(menu);
     }
 
+
     //region Configuracion del Toogle (Region)
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
@@ -93,8 +86,13 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
             return true;
 
         switch (item.getItemId()){
-            case R.id.action_filtro:
-
+            case R.id.filtro_vegetariana:
+                Intent intent = new Intent(this, FilVegetarianaActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.filtro_vegana:
+                Intent intentt = new Intent(this, FilVeganaActivity.class);
+                startActivity(intentt);
                 break;
         }
         
@@ -149,6 +147,8 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
             case R.id.nav_logout:
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
+                finish();
+                break;
         }
 
         binding.drawer.closeDrawers();
@@ -157,9 +157,19 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
     @Override
     public void onHomeClick(int pos, int type) {
+        goToDetail(pos,type, DetailPageActivity.DATA_HOME);
+    }
+
+    @Override
+    public void onFavoritoClick(int pos, int type) {
+        goToDetail(pos,type, DetailPageActivity.DATA_FAVORITE);
+    }
+
+    public void goToDetail(int pos,int type, int lista){
         if(type== Item.TYPE_RECETA){
             Intent intent = new Intent(this, DetailPageActivity.class);
             intent.putExtra(DetailPageActivity.EXTRA_POS, pos);
+            intent.putExtra(DetailPageActivity.EXTRA_TYPE, lista);
             startActivity(intent);
         }
     }

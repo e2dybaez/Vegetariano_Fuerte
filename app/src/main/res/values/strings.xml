@@ -38,8 +38,8 @@
     <string name="login_error">Usuario o password incorrecto</string>
     <string name="reg_error">El usuario ya existe</string>
     <string name="reg_success">Registro Exitoso</string>
-=======
+    =======
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
->>>>>>> 0ed76dcffc948ddeefc774115983e1b3c62ba366
+    >>>>>>> 0ed76dcffc948ddeefc774115983e1b3c62ba366
 </resources>
